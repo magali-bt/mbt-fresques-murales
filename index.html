@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBT — Magali Billioud Tourlan | Artiste peintre muraliste</title>
+<meta name="description" content="Fresques murales personnalisées pour particuliers, entreprises et collectivités. Peintures labellisées NF environnement, faibles émissions COV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Caveat:wght@600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0F2E33;
+    --teal-mid:#184951;
+    --teal-line:rgba(241,232,216,0.14);
+    --orange:#E85A2A;
+    --orange-dark:#C74A20;
+    --sand:#F1E8D8;
+    --sand-light:#F8F3E9;
+    --ink:#17211F;
+    --gold:#CB9B3E;
+    --line:rgba(23,33,31,0.13);
+    --shadow:0 20px 44px -22px rgba(15,46,51,0.45);
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Nunito Sans',sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Baloo 2', sans-serif;
+    margin:0;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+  section{padding:110px 0;position:relative;}
+  .script{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+  }
+  .eyebrow{
+    font-family:'Baloo 2', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--orange);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{content:"";width:24px;height:2px;background:var(--orange);display:inline-block;border-radius:2px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;
+    background:var(--orange);
+    color:#fff;
+    text-decoration:none;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:15.5px;
+    border:none;border-radius:100px;
+    cursor:pointer;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .btn:hover{background:var(--orange-dark); transform:translateY(-2px);}
+  .btn.ghost{
+    background:transparent; color:var(--sand);
+    border:1.5px solid rgba(241,232,216,0.5);
+  }
+  .btn.ghost:hover{border-color:var(--sand); background:rgba(241,232,216,0.08);}
+  .btn.dark{background:var(--teal-deep); color:var(--sand);}
+  .btn.dark:hover{background:var(--teal-mid);}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* concentric "trompe-l'oeil" ring motif — signature element */
+  .ring-motif{
+    width:64px; height:64px; border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 0 18%, var(--gold) 18% 26%, transparent 26% 40%, var(--orange) 40% 48%, transparent 48% 62%, #7A3E8C 62% 70%, transparent 70% 100%);
+    flex:none;
+  }
+
+  /* leaf line-art background (SVG data uri via CSS) */
+  .leaf-bg{
+    position:absolute; inset:0; overflow:hidden; pointer-events:none;
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 0;
+    transition:background .3s ease, padding .3s ease;
+  }
+  .site-header.scrolled{
+    background:rgba(15,46,51,0.94);
+    backdrop-filter:blur(8px);
+    padding:13px 0;
+    box-shadow:0 6px 24px -12px rgba(0,0,0,0.4);
+  }
+  .site-header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .brand-mark{
+    width:42px; height:42px; border-radius:50%;
+    background:var(--orange);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',sans-serif; font-weight:800; color:#fff; font-size:15px;
+    flex:none;
+  }
+  .brand-text{line-height:1.15;}
+  .brand-text b{
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15px; color:var(--sand); display:block;
+  }
+  .brand-text span{
+    font-family:'Caveat', cursive; font-weight:600; font-size:14px; color:var(--sand); opacity:.85;
+  }
+  nav.main-nav ul{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+  nav.main-nav a{
+    text-decoration:none; font-size:14.5px; font-weight:700; font-family:'Baloo 2',sans-serif;
+    color:var(--sand); position:relative; padding-bottom:3px;
+  }
+  nav.main-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--orange);transition:width .25s ease;}
+  nav.main-nav a:hover::after{width:100%;}
+  .header-actions{display:flex; align-items:center; gap:18px;}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .burger span{display:block; width:22px; height:2px; background:var(--sand); margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--teal-deep);
+    color:var(--sand);
+    padding:180px 0 120px;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:50px; align-items:center;}
+  .hero h1{font-size:clamp(36px,4.6vw,54px); line-height:1.1; color:var(--sand);}
+  .hero h1 .accent{color:var(--orange);}
+  .hero .tagline{
+    font-family:'Caveat', cursive; font-weight:700; font-size:30px; color:var(--orange);
+    margin-top:8px; display:block;
+  }
+  .hero p.lead{max-width:460px; margin:24px 0 32px; font-size:17px; color:#DCD3C0;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+
+  .collage{position:relative; height:440px;}
+  .collage .ph{
+    position:absolute; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    border:6px solid var(--sand-light);
+  }
+  .collage .ph img{width:100%; height:100%; object-fit:cover;}
+  .collage .ph-1{width:64%; height:290px; top:0; right:0; z-index:2; transform:rotate(2deg);}
+  .collage .ph-2{width:46%; height:220px; bottom:0; left:0; z-index:3; transform:rotate(-4deg);}
+  .collage .ph-3{width:32%; height:160px; top:40%; left:34%; z-index:1; transform:rotate(6deg);}
+
+  .palm-line{position:absolute; opacity:0.5;}
+
+  /* badge strip */
+  .badge-strip{background:var(--sand-light); border-bottom:1px solid var(--line);}
+  .badge-strip .wrap{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:36px; padding:44px 32px;
+  }
+  .badge{display:flex; gap:16px; align-items:flex-start;}
+  .badge-dot{
+    width:12px; height:12px; border-radius:50%; background:var(--orange); margin-top:7px; flex:none;
+  }
+  .badge p{margin:0; font-family:'Baloo 2',sans-serif; font-weight:600; font-size:16px; color:var(--ink); line-height:1.4;}
+
+  /* ---------- ABOUT ---------- */
+  .about .wrap{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:center;}
+  .about-photo{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:6px solid #fff;}
+  .about h2{font-size:clamp(30px,3.2vw,38px);}
+  .about p{color:#3c4a47; font-size:16.5px; max-width:540px;}
+  .stat-row{display:flex; gap:0; margin-top:36px; border-top:1px solid var(--line);}
+  .stat{flex:1; padding:20px 18px 0; border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat b{font-family:'Baloo 2',sans-serif; font-size:28px; display:block; color:var(--orange);}
+  .stat span{font-size:12.5px; color:#6b7a76;}
+
+  /* ---------- UNIVERS / GALLERY ---------- */
+  .univers{background:var(--teal-deep); color:var(--sand);}
+  .univers .eyebrow{color:var(--gold);}
+  .univers .eyebrow::before{background:var(--gold);}
+  .univers h2{color:var(--sand);}
+  .univers .section-head p{color:#CBC0AC;}
+
+  .filter-tabs{
+    display:flex; gap:10px; flex-wrap:wrap; margin:36px 0 40px;
+  }
+  .filter-tab{
+    font-family:'Baloo 2',sans-serif; font-weight:600; font-size:14px;
+    padding:10px 20px; border-radius:100px; border:1.5px solid rgba(241,232,216,0.3);
+    background:transparent; color:var(--sand); cursor:pointer; transition:all .2s ease;
+  }
+  .filter-tab:hover{border-color:var(--sand);}
+  .filter-tab.active{background:var(--orange); border-color:var(--orange); color:#fff;}
+
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:230px; gap:14px;
+  }
+  .gallery-item{
+    position:relative; border-radius:var(--radius); overflow:hidden; cursor:pointer;
+    box-shadow:0 16px 30px -18px rgba(0,0,0,0.5);
+  }
+  .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-cap{
+    position:absolute; left:0; right:0; bottom:0; padding:14px 16px;
+    background:linear-gradient(to top, rgba(0,0,0,0.72), transparent);
+    color:#fff; font-size:13px; font-family:'Baloo 2',sans-serif; font-weight:600;
+  }
+  .gallery-tag{
+    position:absolute; top:12px; left:12px;
+    background:rgba(241,232,216,0.92); color:var(--teal-deep);
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:10.5px;
+    text-transform:uppercase; letter-spacing:.05em;
+    padding:5px 10px; border-radius:100px;
+  }
+  .gallery-item.hidden{display:none;}
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--sand-light);}
+  .layers{margin-top:10px;}
+  .layer{display:grid; grid-template-columns:200px 1fr; gap:36px; padding:28px 0; border-top:1px solid var(--line); align-items:start;}
+  .layer:last-child{border-bottom:1px solid var(--line);}
+  .layer-label{font-family:'Baloo 2',sans-serif; font-size:13px; font-weight:700; letter-spacing:.06em; color:var(--orange); text-transform:uppercase;}
+  .layer h3{font-size:20px; margin:6px 0 8px; font-weight:600;}
+  .layer p{color:#3c4a47; max-width:520px; margin:0; font-size:15px;}
+
+  /* ---------- TARIFS ---------- */
+  .tarifs{background:var(--sand);}
+  .tarif-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:10px;}
+  .tarif-card{
+    background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:34px 30px;
+    display:flex; flex-direction:column; position:relative;
+  }
+  .tarif-card.featured{border-color:var(--orange); box-shadow:0 24px 50px -28px rgba(232,90,42,0.4);}
+  .tarif-card .flag{
+    position:absolute; top:-14px; left:30px;
+    background:var(--orange); color:#fff; font-family:'Baloo 2',sans-serif; font-weight:700;
+    font-size:11.5px; padding:5px 14px; border-radius:100px; text-transform:uppercase; letter-spacing:.04em;
+  }
+  .tarif-card h3{font-size:21px; margin-bottom:6px;}
+  .tarif-card .price{
+    font-family:'Baloo 2',sans-serif; font-weight:800; font-size:32px; color:var(--teal-deep); margin:14px 0 4px;
+  }
+  .tarif-card .price span{font-size:14px; font-weight:600; color:#6b7a76;}
+  .tarif-card .desc{font-size:14.5px; color:#3c4a47; margin-bottom:20px;}
+  .tarif-card ul{list-style:none; padding:0; margin:0 0 24px; flex:1;}
+  .tarif-card li{
+    font-size:14px; color:#2f3c39; padding:9px 0 9px 26px; border-top:1px solid var(--line);
+    position:relative;
+  }
+  .tarif-card li:first-child{border-top:none;}
+  .tarif-card li::before{
+    content:"✓"; position:absolute; left:0; top:9px; color:var(--orange); font-weight:700;
+  }
+  .tarif-note{
+    margin-top:36px; padding:22px 26px; background:var(--sand-light); border-radius:12px;
+    font-size:14px; color:#3c4a47; border-left:4px solid var(--gold);
+  }
+  .tarif-note b{color:var(--ink);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--teal-deep); color:var(--sand);}
+  .contact .eyebrow{color:var(--gold);}
+  .contact .eyebrow::before{background:var(--gold);}
+  .contact h2{color:var(--sand);}
+  .contact .wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px;}
+  .contact-info p{color:#CBC0AC; max-width:420px;}
+  .info-list{list-style:none; padding:0; margin:32px 0 0;}
+  .info-list li{padding:16px 0; border-top:1px solid rgba(241,232,216,0.16); display:flex; justify-content:space-between; font-size:14.5px;}
+  .info-list li:last-child{border-bottom:1px solid rgba(241,232,216,0.16);}
+  .info-list b{font-family:'Baloo 2',sans-serif; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--gold);}
+  .info-list a{color:var(--sand); text-decoration:none;}
+  .info-list a:hover{text-decoration:underline;}
+
+  form.contact-form{display:flex; flex-direction:column; gap:16px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .contact-form label{font-family:'Baloo 2',sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--gold); display:block; margin-bottom:6px;}
+  .contact-form input, .contact-form select, .contact-form textarea{
+    width:100%; padding:13px 14px; border:1px solid rgba(241,232,216,0.28); background:rgba(241,232,216,0.06);
+    font-family:'Nunito Sans',sans-serif; font-size:15px; color:var(--sand); border-radius:var(--radius);
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder{color:#8FA5A2;}
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{outline:2px solid var(--orange); outline-offset:1px;}
+  .contact-form textarea{resize:vertical; min-height:110px;}
+  .contact-form select option{color:#111;}
+  .form-note{font-size:12.5px; color:#8FA5A2; margin-top:-4px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0A2226; color:#9CB0AD; padding:50px 0 28px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:30px;}
+  footer nav ul{list-style:none; display:flex; gap:24px; padding:0; margin:0;}
+  footer nav a{text-decoration:none; font-size:14px; color:#9CB0AD;}
+  footer nav a:hover{color:var(--sand);}
+  .footer-bottom{margin-top:40px; padding-top:22px; border-top:1px solid rgba(241,232,216,0.1); font-size:12.5px; color:#5f7975; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  .section-head{max-width:640px; margin-bottom:20px;}
+  .section-head h2{font-size:clamp(28px,3.2vw,38px);}
+  .section-head p{color:#3c4a47; font-size:16px; margin-top:14px;}
+
+  @media (max-width:900px){
+    section{padding:76px 0;}
+    nav.main-nav{
+      position:fixed; top:0; right:0; bottom:0; width:min(320px,80vw);
+      background:var(--teal-deep); padding:100px 32px 32px;
+      transform:translateX(100%); transition:transform .3s ease;
+      box-shadow:-10px 0 30px rgba(0,0,0,0.3);
+    }
+    nav.main-nav.open{transform:translateX(0);}
+    nav.main-nav ul{flex-direction:column; gap:22px;}
+    .burger{display:block;}
+    .header-actions .btn.ghost{display:none;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .collage{height:320px; margin-top:10px;}
+    .badge-strip .wrap{grid-template-columns:1fr; gap:22px;}
+    .about .wrap{grid-template-columns:1fr; gap:34px;}
+    .gallery-grid{grid-template-columns:1fr 1fr; grid-auto-rows:170px;}
+    .layer{grid-template-columns:1fr; gap:8px;}
+    .tarif-grid{grid-template-columns:1fr;}
+    .contact .wrap{grid-template-columns:1fr; gap:36px;}
+    .form-row{grid-template-columns:1fr;}
+    footer .wrap{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">MBT</span>
+      <span class="brand-text"><b>Magali Billioud Tourlan</b><span>Artiste peintre muraliste</span></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#univers">Univers</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="#contact" class="btn ghost">Demander un devis</a>
+      <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text reveal">
+      <div class="eyebrow">Peintre muraliste — intérieur</div>
+      <h1>Un mur, une histoire,<br><span class="accent">racontée en couleur.</span></h1>
+      <span class="tagline">Artiste peintre muraliste</span>
+      <p class="lead">Fresques murales personnalisées et uniques, pour particuliers, entreprises et collectivités — peintes directement chez vous.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn">Demander un devis</a>
+        <a href="#univers" class="btn dark">Découvrir mon univers</a>
+      </div>
+    </div>
+    <div class="collage reveal">
+      <div class="ph ph-1"><img src="images/hero-1.jpg" alt="Fresque tropicale murale bleu pétrole et orange"></div>
+      <div class="ph ph-2"><img src="images/hero-2.jpg" alt="Fresque de lamas peints dans une chambre d'enfant"></div>
+      <div class="ph ph-3"><img src="images/hero-3.jpg" alt="Trompe-l'œil peint en illusion de tunnel coloré"></div>
+    </div>
+  </div>
+</section>
+
+<div class="badge-strip">
+  <div class="wrap">
+    <div class="badge reveal"><span class="badge-dot"></span><p>Fresque murale personnalisée et unique</p></div>
+    <div class="badge reveal"><span class="badge-dot"></span><p>Pour particuliers, entreprises, collectivités</p></div>
+    <div class="badge reveal"><span class="badge-dot"></span><p>Peintures labellisées NF environnement, à faibles émissions COV</p></div>
+  </div>
+</div>
+
+<section class="about" id="apropos">
+  <div class="wrap">
+    <div class="about-photo reveal">
+      <img src="images/portrait-atelier.jpg" alt="Magali Billioud Tourlan peignant une fresque tropicale">
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">L'artiste</div>
+      <h2>Je m'appelle Magali, je peins des mondes sur vos murs.</h2>
+      <p>Des jungles tropicales aux montagnes colorées des Andes, des illusions d'optique aux univers enfantins peuplés de renards et de hiboux : chaque fresque part d'une rencontre avec vous, votre pièce et son usage.</p>
+      <p>Je travaille avec des peintures labellisées NF environnement à faibles émissions de COV, adaptées à chaque intérieur — chambre d'enfant, salon, restaurant ou espace professionnel.</p>
+      <div class="stat-row">
+        <div class="stat"><b>5</b><span>univers explorés</span></div>
+        <div class="stat"><b>100%</b><span>sur-mesure</span></div>
+        <div class="stat"><b>NF Env.</b><span>peintures faibles COV</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="univers" id="univers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Portfolio</div>
+      <h2>Cinq univers, un même geste</h2>
+      <p>Chaque fresque est une pièce unique — voici un aperçu des ambiances que j'ai peintes ces dernières années.</p>
+    </div>
+    <div class="filter-tabs reveal" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">Tout voir</button>
+      <button class="filter-tab" data-filter="tropical">Tropical &amp; Végétal</button>
+      <button class="filter-tab" data-filter="enfant">Enfants &amp; Imaginaire</button>
+      <button class="filter-tab" data-filter="voyage">Voyage &amp; Culture</button>
+      <button class="filter-tab" data-filter="illusion">Illusion &amp; Trompe-l'œil</button>
+      <button class="filter-tab" data-filter="musique">Abstrait &amp; Musique</button>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <div class="gallery-item" data-cat="tropical" data-full="images/gallery-tropical-2.jpg"><span class="gallery-tag">Tropical</span><img src="images/gallery-tropical-2.jpg" alt="Fresque tropicale bleu pétrole et orange"><div class="gallery-cap">Jungle nocturne — chambre</div></div>
+      <div class="gallery-item" data-cat="tropical" data-full="images/gallery-tropical-1.jpg"><span class="gallery-tag">Tropical</span><img src="images/gallery-tropical-1.jpg" alt="Fresque tropicale derrière un lit"><div class="gallery-cap">Ambiance tropicale — tête de lit</div></div>
+      <div class="gallery-item" data-cat="tropical" data-full="images/gallery-floral.jpg"><span class="gallery-tag">Tropical</span><img src="images/gallery-floral.jpg" alt="Agave bleu peint sur un mur"><div class="gallery-cap">Agave — salle de bain</div></div>
+      <div class="gallery-item" data-cat="voyage" data-full="images/gallery-voyage-1.jpg"><span class="gallery-tag">Voyage</span><img src="images/gallery-voyage-1.jpg" alt="Montagne Vinicunca peinte avec lamas"><div class="gallery-cap">Vinicunca — chambre d'enfant</div></div>
+      <div class="gallery-item" data-cat="voyage" data-full="images/gallery-voyage-2.jpg"><span class="gallery-tag">Voyage</span><img src="images/gallery-voyage-2.jpg" alt="Détail de deux lamas peints"><div class="gallery-cap">Lamas — détail</div></div>
+      <div class="gallery-item" data-cat="illusion" data-full="images/gallery-illusion-1.jpg"><span class="gallery-tag">Illusion</span><img src="images/gallery-illusion-1.jpg" alt="Trompe-l'œil en tunnel coloré"><div class="gallery-cap">Trompe-l'œil — tunnel de couleurs</div></div>
+      <div class="gallery-item" data-cat="illusion" data-full="images/gallery-illusion-2.jpg"><span class="gallery-tag">Illusion</span><img src="images/gallery-illusion-2.jpg" alt="Vague peinte sur une porte"><div class="gallery-cap">Mer ou Montagne — porte</div></div>
+      <div class="gallery-item" data-cat="enfant" data-full="images/gallery-enfant-1.jpg"><span class="gallery-tag">Enfants</span><img src="images/gallery-enfant-1.jpg" alt="Arbre peint avec renard et hibou"><div class="gallery-cap">L'arbre aux secrets — chambre</div></div>
+      <div class="gallery-item" data-cat="enfant" data-full="images/gallery-enfant-4.jpg"><span class="gallery-tag">Enfants</span><img src="images/gallery-enfant-4.jpg" alt="Silhouettes d'animaux de la forêt"><div class="gallery-cap">Petite forêt — silhouettes</div></div>
+      <div class="gallery-item" data-cat="enfant" data-full="images/gallery-enfant-5.jpg"><span class="gallery-tag">Enfants</span><img src="images/gallery-enfant-5.jpg" alt="Frise d'animaux dans une chambre de bébé"><div class="gallery-cap">Frise animalière — chambre bébé</div></div>
+      <div class="gallery-item" data-cat="enfant" data-full="images/gallery-enfant-2.jpg"><span class="gallery-tag">Enfants</span><img src="images/gallery-enfant-2.jpg" alt="Détail d'un renard peint"><div class="gallery-cap">Renard — détail</div></div>
+      <div class="gallery-item" data-cat="enfant" data-full="images/gallery-enfant-3.jpg"><span class="gallery-tag">Enfants</span><img src="images/gallery-enfant-3.jpg" alt="Détail d'un hibou peint dans un tronc"><div class="gallery-cap">Hibou — détail</div></div>
+      <div class="gallery-item" data-cat="musique" data-full="images/gallery-musique-1.jpg"><span class="gallery-tag">Musique</span><img src="images/gallery-musique-1.jpg" alt="Fresque abstraite inspirée du jazz"><div class="gallery-cap">Jazz — sous escalier</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Le déroulé</div>
+      <h2>De l'esquisse à la fresque</h2>
+      <p>Comme en peinture, chaque étape prépare la suivante.</p>
+    </div>
+    <div class="layers reveal">
+      <div class="layer">
+        <div class="layer-label">Étape 1</div>
+        <div><h3>Rencontre &amp; inspiration</h3><p>On échange autour de votre projet, de la pièce et de son usage, sur place ou en visio.</p></div>
+      </div>
+      <div class="layer">
+        <div class="layer-label">Étape 2</div>
+        <div><h3>Esquisse &amp; devis</h3><p>Je vous propose un croquis et un devis détaillé, ajustés ensemble jusqu'à ce que le projet vous ressemble.</p></div>
+      </div>
+      <div class="layer">
+        <div class="layer-label">Étape 3</div>
+        <div><h3>Mise en couleur</h3><p>Je peins directement chez vous, avec des peintures NF environnement adaptées à la pièce.</p></div>
+      </div>
+      <div class="layer">
+        <div class="layer-label">Étape 4</div>
+        <div><h3>Finition &amp; protection</h3><p>Un vernis adapté à l'usage de la pièce, pour que la fresque traverse les années.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tarifs" id="tarifs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Tarifs</div>
+      <h2>Trois façons de commencer</h2>
+      <p>Chaque fresque étant unique, les tarifs ci-dessous sont indicatifs : le devis final dépend de la surface, du niveau de détail et de l'accès à la pièce.</p>
+    </div>
+    <div class="tarif-grid reveal">
+      <div class="tarif-card">
+        <h3>Petite intervention</h3>
+        <div class="price">à partir de 150 €</div>
+        <p class="desc">Un détail décoratif : motif ponctuel, interrupteur détourné, petite touche sur un mur existant.</p>
+        <ul>
+          <li>Échange &amp; croquis rapide</li>
+          <li>Surface réduite (jusqu'à 1 m²)</li>
+          <li>Réalisation en une demi-journée</li>
+        </ul>
+        <a href="#contact" class="btn dark">Demander un devis</a>
+      </div>
+      <div class="tarif-card featured">
+        <span class="flag">Le plus demandé</span>
+        <h3>Fresque murale</h3>
+        <div class="price">à partir de 800 <span>€</span></div>
+        <p class="desc">Un mur complet : chambre d'enfant, salon, entrée ou tête de lit, dans l'un des univers présentés plus haut.</p>
+        <ul>
+          <li>Rencontre, croquis &amp; devis détaillé</li>
+          <li>Surface jusqu'à 10 m² environ</li>
+          <li>Peinture NF environnement + finition protectrice</li>
+          <li>1 à 3 jours de réalisation sur place</li>
+        </ul>
+        <a href="#contact" class="btn">Demander un devis</a>
+      </div>
+      <div class="tarif-card">
+        <h3>Projet sur-mesure</h3>
+        <div class="price">Sur devis</div>
+        <p class="desc">Grande surface, plusieurs pièces, restaurant, commerce ou collectivité — un accompagnement complet.</p>
+        <ul>
+          <li>Étude de faisabilité sur place</li>
+          <li>Conception graphique dédiée</li>
+          <li>Planning adapté à votre activité</li>
+        </ul>
+        <a href="#contact" class="btn dark">En discuter</a>
+      </div>
+    </div>
+    <div class="tarif-note reveal">
+      <b>Ce qui fait varier le prix :</b> la surface à peindre, la complexité du motif, la hauteur sous plafond, l'accessibilité du chantier et l'éventuel déplacement. Le premier échange et le devis sont toujours gratuits — les montants ci-dessus sont donnés à titre indicatif et peuvent être ajustés.
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Discutons de votre mur</h2>
+      <p>Décrivez votre projet et vos envies : je reviens vers vous rapidement avec quelques questions ou une proposition de rendez-vous.</p>
+      <ul class="info-list">
+        <li><b>Email</b><a href="mailto:magali.billioud.tourlan@proton.me">magali.billioud.tourlan@proton.me</a></li>
+        <li><b>Téléphone</b><a href="tel:0664891541">06 64 89 15 41</a></li>
+      </ul>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <div class="form-row">
+        <div><label for="name">Nom</label><input type="text" id="name" name="name" required></div>
+        <div><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+      </div>
+      <div>
+        <label for="type">Univers qui vous inspire</label>
+        <select id="type" name="type">
+          <option>Tropical &amp; Végétal</option>
+          <option>Enfants &amp; Imaginaire</option>
+          <option>Voyage &amp; Culture</option>
+          <option>Illusion &amp; Trompe-l'œil</option>
+          <option>Abstrait &amp; Musique</option>
+          <option>Autre / je ne sais pas encore</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Votre projet</label>
+        <textarea id="message" name="message" required placeholder="La pièce concernée, son usage, vos inspirations..."></textarea>
+      </div>
+      <button type="submit" class="btn">Envoyer ma demande</button>
+      <p class="form-note">En cliquant sur "Envoyer", votre messagerie s'ouvrira avec un message pré-rempli.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#top" class="brand"><span class="brand-mark">MBT</span><span class="brand-text"><b style="color:#fff;">Magali Billioud Tourlan</b><span style="color:#9CB0AD;">Artiste peintre muraliste</span></span></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#univers">Univers</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 MBT — Magali Billioud Tourlan. Tous droits réservés.</span>
+    <span>06 64 89 15 41 · magali.billioud.tourlan@proton.me</span>
+  </div>
+</footer>
+
+<div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(10,25,28,0.94); z-index:1000; align-items:center; justify-content:center; padding:40px; cursor:zoom-out;">
+  <img id="lightboxImg" src="" alt="" style="max-width:90vw; max-height:85vh; box-shadow:0 30px 60px rgba(0,0,0,0.5); border-radius:4px;">
+</div>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30));
+
+  const burger = document.getElementById('burgerBtn');
+  const nav = document.getElementById('mainNav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // Gallery filter
+  const tabs = document.querySelectorAll('.filter-tab');
+  const items = document.querySelectorAll('.gallery-item');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.getAttribute('data-filter');
+      items.forEach(item => {
+        item.classList.toggle('hidden', filter !== 'all' && item.getAttribute('data-cat') !== filter);
+      });
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      lightboxImg.src = item.getAttribute('data-full');
+      lightboxImg.alt = item.querySelector('img').alt;
+      lightbox.style.display = 'flex';
+    });
+  });
+  lightbox.addEventListener('click', () => lightbox.style.display = 'none');
+
+  // Contact form -> mailto fallback
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const type = document.getElementById('type').value;
+    const message = document.getElementById('message').value;
+    const subject = encodeURIComponent('Demande de devis — ' + type);
+    const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nUnivers : ${type}\n\n${message}`);
+    window.location.href = `mailto:magali.billioud.tourlan@proton.me?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
