@@ -164,7 +164,29 @@
   .collage .ph img{width:100%; height:100%; object-fit:cover;}
   .collage .ph-1{width:64%; height:290px; top:0; right:0; z-index:5; transform:rotate(2deg);}
   .collage .ph-2{width:46%; height:220px; bottom:0; left:0; z-index:3; transform:rotate(-4deg);}
-  .collage .ph-3{width:32%; height:160px; top:6%; left:6%; z-index:1; transform:rotate(6deg);}
+  .collage .ph-3{width:32%; height:160px; top:6%; left:6%; z-index:1; transform:rotate(6deg);} 
+
+  /* Background brushes image with vertical fade — two clones bottom-left and bottom-right */
+  .hero{position:relative;}
+  .hero::before, .hero::after{content:""; position:absolute; inset:0; pointer-events:none; z-index:1;}
+  .hero::before{
+    background-image: url('images/pinceaux.jpg');
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size:55% auto;
+    -webkit-mask-image: linear-gradient(to top, black 0%, rgba(0,0,0,0) 70%);
+    mask-image: linear-gradient(to top, black 0%, rgba(0,0,0,0) 70%);
+    opacity:0.95;
+  }
+  .hero::after{
+    background-image: url('images/pinceaux.jpg');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size:55% auto;
+    -webkit-mask-image: linear-gradient(to top, black 0%, rgba(0,0,0,0) 70%);
+    mask-image: linear-gradient(to top, black 0%, rgba(0,0,0,0) 70%);
+    opacity:0.9;
+  }
 
   .palm-line{position:absolute; opacity:0.5;}
 
