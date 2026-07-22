@@ -173,8 +173,8 @@
     mask-image: linear-gradient(to top, black, transparent);
     -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
   }
-  .hero::before{background-image: url('images/pinceaux-gauche.jpeg'); background-position:left bottom;}
-  .hero::after{background-image: url('images/pinceaux-droite.jpeg'); background-position:right bottom;}
+  .hero::before{background-image: url('images/pinceaux.jpg'); background-position:left bottom;}
+  .hero::after{background-image: url('images/pinceaux.jpg'); background-position:right bottom; transform: scaleX(-1);} 
 
   /* Radial overlay to reveal center teal and keep sides visible */
   .hero-overlay{position:absolute; inset:0; z-index:2; pointer-events:none;
