@@ -166,24 +166,22 @@
   .collage .ph-2{width:46%; height:220px; bottom:0; left:0; z-index:3; transform:rotate(-4deg);}
   .collage .ph-3{width:32%; height:160px; top:6%; left:6%; z-index:1; transform:rotate(6deg);} 
 
-  /* Background brushes image split in two halves with center horizontal fade and vertical fade; lowered for better visibility */
-  .hero{position:relative;}
-  .hero::before, .hero::after{content:""; position:absolute; inset:0; pointer-events:none; z-index:1; background-image:url('images/pinceaux.jpg'); background-repeat:no-repeat; background-size:60% auto;}
-  .hero::before{
-    background-position: left bottom;
-    transform: translateY(40px);
-    opacity:0.95;
-    /* vertical fade + horizontal fade towards center (right) */
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 45%, rgba(0,0,0,0) 80%), linear-gradient(to right, black 0%, black 45%, rgba(0,0,0,0) 75%);
-    mask-image: linear-gradient(to top, black 0%, black 45%, rgba(0,0,0,0) 80%), linear-gradient(to right, black 0%, black 45%, rgba(0,0,0,0) 75%);
+  /* Background brushes image split vertically into left and right halves with center horizontal fade and vertical fade (top transparent -> bottom opaque) */
+  .hero{position:relative; overflow:hidden;}
+  .hero::before, .hero::after{content:""; position:absolute; top:0; bottom:0; width:50%; pointer-events:none; z-index:1; background-image:url('images/pinceaux.jpg'); background-repeat:no-repeat; background-size:200% 100%;}
+  .hero::before{left:0; /* left half */
+    background-position: 0% 100%; /* show left half */
+    /* vertical fade: top transparent -> bottom opaque; horizontal fade towards center */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);
+    opacity:1;
   }
-  .hero::after{
-    background-position: right bottom;
-    transform: translateY(40px);
-    opacity:0.9;
-    /* vertical fade + horizontal fade towards center (left) */
-    -webkit-mask-image: linear-gradient(to top, black 0%, black 45%, rgba(0,0,0,0) 80%), linear-gradient(to left, black 0%, black 45%, rgba(0,0,0,0) 75%);
-    mask-image: linear-gradient(to top, black 0%, black 45%, rgba(0,0,0,0) 80%), linear-gradient(to left, black 0%, black 45%, rgba(0,0,0,0) 75%);
+  .hero::after{right:0; /* right half */
+    width:50%; left:auto; right:0;
+    background-position: 100% 100%; /* show right half */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);
+    opacity:1;
   }
 
   .palm-line{position:absolute; opacity:0.5;}
