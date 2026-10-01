@@ -640,6 +640,7 @@
     const message = document.getElementById('message').value;
     const subject = encodeURIComponent('Demande de devis — ' + type);
     const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nUnivers : ${type}\n\n${message}`);
+    window.location.href = `mailto:magali.billioud.tourlan@proton.me?subject=${subject}&body=${body}`;
   });
 </script>
 
