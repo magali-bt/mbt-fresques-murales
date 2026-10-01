@@ -540,7 +540,9 @@
         <li><b>📍 Localisation</b> Valence</li>
       </ul>
     </div>
-    <form class="contact-form reveal" id="contactForm">
+    <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/magali.billioud.tourlan@proton.me" method="POST">
+      <input type="hidden" name="_subject" value="Nouvelle demande de devis depuis le site MBT">
+      <input type="hidden" name="_template" value="table">
       <div class="form-row">
         <div><label for="name">Nom</label><input type="text" id="name" name="name" required></div>
         <div><label for="email">Email</label><input type="email" id="email" name="email" required></div>
@@ -561,7 +563,7 @@
         <textarea id="message" name="message" required placeholder="La pièce concernée, son usage, vos inspirations..."></textarea>
       </div>
       <button type="submit" class="btn">Envoyer ma demande</button>
-      <p class="form-note">En cliquant sur "Envoyer", votre messagerie s'ouvrira avec un message pré-rempli.</p>
+      <p class="form-note">En envoyant ce formulaire, vos informations sont transmises à FormSubmit pour acheminer votre demande par e-mail.</p>
     </form>
   </div>
 </section>
@@ -631,17 +633,6 @@
   });
   lightbox.addEventListener('click', () => lightbox.style.display = 'none');
 
-  // Contact form -> mailto fallback
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const type = document.getElementById('type').value;
-    const message = document.getElementById('message').value;
-    const subject = encodeURIComponent('Demande de devis — ' + type);
-    const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nUnivers : ${type}\n\n${message}`);
-    window.location.href = `mailto:magali.billioud.tourlan@proton.me?subject=${subject}&body=${body}`;
-  });
 </script>
 
 </body>
