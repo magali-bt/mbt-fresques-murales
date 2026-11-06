@@ -1,0 +1,38 @@
+User-agent: GPTBot
+Disallow: /images/
+
+User-agent: ChatGPT-User
+Disallow: /images/
+
+User-agent: OAI-SearchBot
+Disallow: /images/
+
+User-agent: ClaudeBot
+Disallow: /images/
+
+User-agent: anthropic-ai
+Disallow: /images/
+
+User-agent: Google-Extended
+Disallow: /images/
+
+User-agent: CCBot
+Disallow: /images/
+
+User-agent: Bytespider
+Disallow: /images/
+
+User-agent: Meta-ExternalAgent
+Disallow: /images/
+
+User-agent: Applebot-Extended
+Disallow: /images/
+
+User-agent: PerplexityBot
+Disallow: /images/
+
+User-agent: Amazonbot
+Disallow: /images/
+
+User-agent: cohere-ai
+Disallow: /images/
